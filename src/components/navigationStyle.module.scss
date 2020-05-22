@@ -1,0 +1,36 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  width: 80%;
+  margin: auto;
+
+  ul {
+    display: flex;
+    justify-content: center;
+
+    li {
+      list-style: none;
+      margin: 0px 10px;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}
+.contactButton {
+  button {
+    background: dodgerblue;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
