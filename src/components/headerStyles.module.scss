@@ -1,5 +1,35 @@
 .header {
-  width: 80%;
+  width: 100%;
   margin: auto;
   color: white;
+
+  background-size: cover;
+  height: 60vh;
+  mix-blend-mode: darken;
+
+  h1 {
+    font-size: 4em;
+  }
+}
+.height {
+  height: 100vh;
+}
+.container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.services {
+  margin-top: 20vh;
+
+  li {
+    list-style: none;
+  }
+}
+.left {
+  margin-top: 10vh;
+}
+.landingLeft {
+  margin-top: 20vh;
 }

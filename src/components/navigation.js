@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-
+import { Button } from "reactstrap"
 import navStyles from "./navigationStyle.module.scss"
 
 const Navigation = () => (
@@ -19,7 +19,7 @@ const Navigation = () => (
     </ul>
 
     <Link to="/contact" className={navStyles.contactButton}>
-      <button>CONTACT US</button>
+      <Button color="danger">CONTACT US</Button>
     </Link>
   </nav>
 )
