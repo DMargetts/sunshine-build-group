@@ -1,18 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import Img from "gatsby-image"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import "bootstrap/dist/css/bootstrap.min.css"
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-} from "reactstrap"
+import { Card, CardText, CardBody, CardTitle } from "reactstrap"
+import TextAndImage from "../components/textAndImage/textAndImage"
+import SectionTitle from "../components/sectionTitle/sectionTitle"
+import BackgroundExpand from "../components/backgroundExpand/backgroundExpand"
 import homeStyles from "./pageStyles/homeStyle.module.scss"
 
 const IndexPage = ({ data }) => {
@@ -28,8 +22,69 @@ const IndexPage = ({ data }) => {
       <Helmet>
         <title>Sunshine Build Group</title>
       </Helmet>
-      <div className={homeStyles.homeContact}>
+      <SectionTitle>
+        <h2>Services</h2>
+      </SectionTitle>
+      <div className={homeStyles.homeServices}>
+        <div className={homeStyles.card}>
+          <Card body className="text-center">
+            <CardBody>
+              <CardTitle>
+                <strong>Loren Ipsum</strong>
+              </CardTitle>
+
+              <CardText>
+                Labore amet cupidatat anim irure consequat ut eiusmod dolor
+                culpa.Eiusmod quis culpa esse est cupidatat qui proident
+                incididunt ea eu culpa mollit proident enim.Sunt amet sint sint
+                ex do elit laboris aliquip duis deserunt reprehenderit tempor ad
+                voluptate.Culpa sit ullamco ad aute reprehenderit dolor aute non
+                et qui eu dolor eu ipsum.
+              </CardText>
+            </CardBody>
+          </Card>
+        </div>
+        <div className={homeStyles.card}>
+          <Card body className="text-center">
+            <CardBody>
+              <CardTitle>
+                <strong>Loren Ipsum</strong>
+              </CardTitle>
+
+              <CardText>
+                Labore amet cupidatat anim irure consequat ut eiusmod dolor
+                culpa.Eiusmod quis culpa esse est cupidatat qui proident
+                incididunt ea eu culpa mollit proident enim.Sunt amet sint sint
+                ex do elit laboris aliquip duis deserunt reprehenderit tempor ad
+                voluptate.Culpa sit ullamco ad aute reprehenderit dolor aute non
+                et qui eu dolor eu ipsum.
+              </CardText>
+            </CardBody>
+          </Card>
+        </div>
+        <div className={homeStyles.card}>
+          <Card body className="text-center">
+            <CardBody>
+              <CardTitle>
+                <strong>Loren Ipsum</strong>
+              </CardTitle>
+
+              <CardText>
+                Labore amet cupidatat anim irure consequat ut eiusmod dolor
+                culpa.Eiusmod quis culpa esse est cupidatat qui proident
+                incididunt ea eu culpa mollit proident enim.Sunt amet sint sint
+                ex do elit laboris aliquip duis deserunt reprehenderit tempor ad
+                voluptate.Culpa sit ullamco ad aute reprehenderit dolor aute non
+                et qui eu dolor eu ipsum.
+              </CardText>
+            </CardBody>
+          </Card>
+        </div>
+      </div>
+      <SectionTitle>
         <h2>No Project Too Big Or Too Small</h2>
+      </SectionTitle>
+      <TextAndImage>
         <p>
           We provide all the required materials, labor and equipment essential
           to completing any given project. Then, we manage the project for you
@@ -44,45 +99,56 @@ const IndexPage = ({ data }) => {
           track of every detail—something essential to make sure the work is
           done right the first time.
         </p>
-      </div>
-      <div className={homeStyles.homeServices}>
-        <div className={homeStyles.card}>
-          <Card>
-            <CardBody>
-              <CardTitle>Card title</CardTitle>
-              <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </CardText>
-            </CardBody>
-          </Card>
+      </TextAndImage>
+      <BackgroundExpand>
+        <SectionTitle>
+          <h2>Why Us</h2>
+        </SectionTitle>
+        <div className={homeStyles.homeServices}>
+          <div className={homeStyles.card}>
+            <Card body className="text-center">
+              <CardBody>
+                <CardTitle>
+                  <strong>Certified Professionals</strong>
+                </CardTitle>
+                <CardText>
+                  Laborum pariatur pariatur deserunt sint.Amet reprehenderit in
+                  elit nostrud qui Lorem labore anim enim id culpa voluptate
+                  enim.
+                </CardText>
+              </CardBody>
+            </Card>
+          </div>
+          <div className={homeStyles.card}>
+            <Card body className="text-center">
+              <CardBody>
+                <CardTitle>
+                  <strong>24/7 support</strong>
+                </CardTitle>
+                <CardText>
+                  Laborum pariatur pariatur deserunt sint.Amet reprehenderit in
+                  elit nostrud qui Lorem labore anim enim id culpa voluptate
+                  enim.
+                </CardText>
+              </CardBody>
+            </Card>
+          </div>
+          <div className={homeStyles.card}>
+            <Card body className="text-center">
+              <CardBody>
+                <CardTitle>
+                  <strong>100% Satisfaction</strong>
+                </CardTitle>
+                <CardText>
+                  Laborum pariatur pariatur deserunt sint.Amet reprehenderit in
+                  elit nostrud qui Lorem labore anim enim id culpa voluptate
+                  enim.
+                </CardText>
+              </CardBody>
+            </Card>
+          </div>
         </div>
-        <div className={homeStyles.card}>
-          <Card>
-            <CardBody>
-              <CardTitle>Card title</CardTitle>
-              <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </CardText>
-            </CardBody>
-          </Card>
-        </div>
-        <div className={homeStyles.card}>
-          <Card>
-            <CardBody>
-              <CardTitle>Card title</CardTitle>
-              <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </CardText>
-            </CardBody>
-          </Card>
-        </div>
-      </div>
+      </BackgroundExpand>
     </Layout>
   )
 }

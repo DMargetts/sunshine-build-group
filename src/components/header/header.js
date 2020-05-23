@@ -1,12 +1,12 @@
 import React from "react"
-import Navigation from "./navigation"
+import Navigation from "../navigation/navigation"
 import { Button } from "reactstrap"
 import BackgroundImage from "gatsby-background-image"
-import { graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 
 import headerStyles from "./headerStyles.module.scss"
 
-const Header = ({ heading, button, services, data, header, landing }) => {
+const Header = ({ heading, button, services, header, landing }) => {
   console.log(header)
   return (
     <BackgroundImage
@@ -24,30 +24,9 @@ const Header = ({ heading, button, services, data, header, landing }) => {
             </Link>
           )}
         </div>
-        {services && (
-          <div className={headerStyles.services}>
-            <h2>Our Services</h2>
-            <ul>
-              <li>Commercial Services</li>
-              <li>Site Management</li>
-              <li>Government Contracting</li>
-              <li>Industrial Services</li>
-            </ul>
-          </div>
-        )}
       </div>
     </BackgroundImage>
   )
 }
-export const query = graphql`
-  query {
-    file(relativePath: { eq: "construction-icon-1-white.png" }) {
-      childImageSharp {
-        fixed {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-  }
-`
+
 export default Header

@@ -1,6 +1,8 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import { Button, Form, FormGroup, Input } from "reactstrap"
+import { graphql } from "gatsby"
+import TextSection from "../components/textSection/textSection"
 
 import contactStyles from "./pageStyles/contactStyle.module.scss"
 
@@ -9,11 +11,11 @@ const Contact = ({ data }) => (
     <div className={contactStyles.contact}>
       <h1>Have some questions?</h1>
       <div className={contactStyles.info}>
-        <p>
+        <TextSection align="left">
           Feel free to get in touch with us. We are always open to discussing
           new projects, creative ideas or opportunities to be part of your
           visions
-        </p>
+        </TextSection>
         <div className={contactStyles.infoItem}>
           <svg
             height="50pt"
