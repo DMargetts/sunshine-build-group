@@ -6,8 +6,7 @@ import { Link } from "gatsby"
 
 import headerStyles from "./headerStyles.module.scss"
 
-const Header = ({ heading, button, services, header, landing }) => {
-  console.log(header)
+const Header = ({ heading, button, header, landing }) => {
   return (
     <BackgroundImage
       fluid={header}

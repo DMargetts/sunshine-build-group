@@ -3,13 +3,15 @@ import Layout from "../components/layout/layout"
 import { Button, Form, FormGroup, Input } from "reactstrap"
 import { graphql } from "gatsby"
 import TextSection from "../components/textSection/textSection"
-
+import SectionTitle from "../components/sectionTitle/sectionTitle"
 import contactStyles from "./pageStyles/contactStyle.module.scss"
 
 const Contact = ({ data }) => (
   <Layout header={data.file.childImageSharp.fluid} heading="Contact Sunshine">
+    <SectionTitle>
+      <h2>Have some questions?</h2>
+    </SectionTitle>
     <div className={contactStyles.contact}>
-      <h1>Have some questions?</h1>
       <div className={contactStyles.info}>
         <TextSection align="left">
           Feel free to get in touch with us. We are always open to discussing
@@ -73,7 +75,9 @@ const Contact = ({ data }) => (
               placeholder="Message"
             />
           </FormGroup>
-          <Button color="danger">Send</Button>
+          <Button className={contactStyles.button} color="danger">
+            Send
+          </Button>
         </Form>
       </div>
     </div>

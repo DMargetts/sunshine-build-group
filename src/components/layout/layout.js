@@ -1,5 +1,5 @@
 import React from "react"
-
+import { Helmet } from "react-helmet"
 import Header from "../header/header"
 import Footer from "../footer/footer"
 import "../../styles/style.scss"
@@ -8,6 +8,9 @@ import layoutStyles from "./layoutStyle.module.scss"
 const Layout = ({ children, heading, button, services, header, landing }) => {
   return (
     <div className={layoutStyles.full}>
+      <Helmet>
+        <title>Sunshine Build Group</title>
+      </Helmet>
       <header className={layoutStyles.header}>
         <Header
           heading={heading}

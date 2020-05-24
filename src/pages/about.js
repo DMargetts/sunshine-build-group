@@ -5,35 +5,18 @@ import TextSection from "../components/textSection/textSection"
 import TextAndImage from "../components/textAndImage/textAndImage"
 import SectionTitle from "../components/sectionTitle/sectionTitle"
 import BackgroundExpand from "../components/backgroundExpand/backgroundExpand"
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  Row,
-  Col,
-} from "reactstrap"
+import { Card, CardText, CardBody, CardTitle, Row, Col } from "reactstrap"
 import Img from "gatsby-image"
 
 const About = ({ data }) => (
-  <Layout heading="About us" header={data.file.childImageSharp.fluid}>
+  <Layout heading="About us" header={data.head.childImageSharp.fluid}>
     <SectionTitle>
       <h2>Who We Are</h2>
     </SectionTitle>
-    <TextSection>
-      We are not just another Tampa roofing company. We are a local Tampa
-      roofing company. Our customers are more than just people who are going to
-      put money in our pockets, they are our friends and family, our neighbours
-      and our acquaintances.
-    </TextSection>
+    <TextSection>{data.content.edges[0].node.whoWeAre.whoWeAre}</TextSection>
 
-    <TextAndImage image reverse>
-      Because of that, we take our job seriously. If there’s a small hole that
-      needs patching, our staff will take the utmost care to ensure that the job
-      is done properly the first time so that you won’t have to pay for the same
-      repair twice. For larger jobs, we make sure that the team we send has the
-      utmost in experience and expertise.
+    <TextAndImage image={data.about.childImageSharp.fluid} reverse>
+      {data.content.edges[0].node.whoWeAreExtended.whoWeAreExtended}
     </TextAndImage>
     <BackgroundExpand>
       <SectionTitle>
@@ -42,7 +25,10 @@ const About = ({ data }) => (
       <Row>
         <Col sm="3">
           <Card body className="text-center" style={{ border: "none" }}>
-            <Img fluid={data.file.childImageSharp.fluid} />
+            <Img
+              fluid={data.team1.childImageSharp.fluid}
+              style={{ height: "150px" }}
+            />
             <CardBody>
               <CardTitle>
                 <strong>CEO</strong>
@@ -53,7 +39,10 @@ const About = ({ data }) => (
         </Col>
         <Col sm="3">
           <Card body className="text-center" style={{ border: "none" }}>
-            <Img fluid={data.file.childImageSharp.fluid} />
+            <Img
+              fluid={data.team4.childImageSharp.fluid}
+              style={{ height: "150px" }}
+            />
             <CardBody>
               <CardTitle>
                 <strong>Supervisor</strong>
@@ -66,7 +55,10 @@ const About = ({ data }) => (
 
         <Col sm="3">
           <Card body className="text-center" style={{ border: "none" }}>
-            <Img fluid={data.file.childImageSharp.fluid} />
+            <Img
+              fluid={data.team2.childImageSharp.fluid}
+              style={{ height: "150px" }}
+            />
             <CardBody>
               <CardTitle>
                 <strong>Assistant Supervisor</strong>
@@ -79,7 +71,10 @@ const About = ({ data }) => (
 
         <Col sm="3">
           <Card body className="text-center" style={{ border: "none" }}>
-            <Img fluid={data.file.childImageSharp.fluid} />
+            <Img
+              fluid={data.team3.childImageSharp.fluid}
+              style={{ height: "150px" }}
+            />
             <CardBody>
               <CardTitle>
                 <strong>Human Resources</strong>
@@ -93,12 +88,60 @@ const About = ({ data }) => (
     </BackgroundExpand>
   </Layout>
 )
-export const query = graphql`
+export const [head, about, team1, team2, team3, team4] = graphql`
   query {
-    file(relativePath: { eq: "about.jpg" }) {
+    head: file(relativePath: { eq: "about.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1920, quality: 100) {
           ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+    about: file(relativePath: { eq: "Aboutus-image.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 588, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    team1: file(relativePath: { eq: "ceo.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 588, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    team2: file(relativePath: { eq: "supervisor.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 588, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    team3: file(relativePath: { eq: "assistant.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 588, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    team4: file(relativePath: { eq: "worker.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 588, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
+    content: allContentfulAbout {
+      edges {
+        node {
+          whoWeAre {
+            whoWeAre
+          }
+          whoWeAreExtended {
+            whoWeAreExtended
+          }
         }
       }
     }

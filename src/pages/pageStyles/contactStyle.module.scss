@@ -2,17 +2,22 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  padding: 50px 0px;
+  padding-bottom: 50px;
 
   h1 {
     grid-column: 1 / span 2;
     text-align: center;
     padding-bottom: 20px;
   }
+  @media only screen and(max-width:834px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 .info {
   padding-right: 20px;
 }
+
 .infoItem {
   display: grid;
   grid-template-rows: auto auto;
@@ -26,6 +31,7 @@
     margin: 8px 20px 0px 0px;
   }
   h3 {
+    font-size: 1.5em;
     grid-column: 2;
     grid-row: 1;
   }
@@ -38,8 +44,5 @@
   width: 100%;
 }
 .button {
-  background-color: dodgerblue;
-  &:hover {
-    cursor: pointer;
-  }
+  padding: 5px 40px !important;
 }

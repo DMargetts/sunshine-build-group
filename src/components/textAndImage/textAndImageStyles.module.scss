@@ -1,21 +1,24 @@
 .container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-bottom: 50px;
 }
 .paragraph {
   padding-right: 20px;
   font-size: 1.2em;
   text-align: center;
+  align-items: center;
   width: 50%;
 }
 .image {
-  height: 500px;
-  width: 480px;
+  height: 100%;
+  width: 380px;
 }
 .reverse {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-bottom: 50px;
   flex-direction: row-reverse;
 }
