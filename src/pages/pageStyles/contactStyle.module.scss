@@ -45,4 +45,14 @@
 }
 .button {
   padding: 5px 40px !important;
+  background: tomato !important;
+  border: none !important;
+}
+.svg {
+  height: 50px;
+  width: 50px;
+
+  path {
+    fill: tomato;
+  }
 }

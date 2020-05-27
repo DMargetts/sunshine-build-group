@@ -42,7 +42,9 @@ const Navigation = () => {
       </ul>
 
       <Link to="/contact" className={navStyles.contactButton}>
-        <Button color="danger">CONTACT US</Button>
+        <Button style={{ background: "tomato", border: "none" }}>
+          CONTACT US
+        </Button>
       </Link>
     </nav>
   )

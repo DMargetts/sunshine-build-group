@@ -46,7 +46,7 @@ const Projects = ({ data }) => {
         onExited={() => setAnimating(false)}
         key={item.node.id}
       >
-        <Img fluid={item.node.fluid} className={projectStyles.carouselSize} />
+        <Img fluid={item.node.fluid} />
       </CarouselItem>
     )
   })

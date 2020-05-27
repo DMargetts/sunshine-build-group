@@ -22,12 +22,12 @@
         transition: 0.2s;
 
         &:hover {
-          border-bottom: 2px solid crimson;
+          border-bottom: 2px solid tomato;
         }
       }
     }
   }
 }
 .active {
-  border-bottom: 2px solid crimson;
+  border-bottom: 2px solid tomato;
 }
