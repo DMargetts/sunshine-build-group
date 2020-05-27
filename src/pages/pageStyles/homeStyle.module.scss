@@ -5,11 +5,26 @@
   display: flex;
   justify-content: space-evenly;
   margin: 20px 0px;
+  @media only screen and(max-width:834px) {
+    flex-direction: column;
+  }
 }
 .card {
   width: 30%;
-
+  @media only screen and(max-width:834px) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
   img {
     width: 30%;
+  }
+}
+.svg {
+  height: 75px;
+  width: 75px;
+  margin: auto;
+
+  path {
+    fill: tomato;
   }
 }

@@ -1,8 +1,10 @@
 .title {
   text-align: center;
-  padding: 50px 0px;
-}
-.titleSize {
-  font-size: 1.7em;
-  border-bottom: 2px solid crimson;
+  padding-top: 50px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid tomato;
+  font-size: 5vw;
+  @media only screen and(max-width:834px) {
+    font-size: 7vw;
+  }
 }

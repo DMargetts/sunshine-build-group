@@ -1,0 +1,25 @@
+.image {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.imageContainer {
+  cursor: pointer;
+}
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  margin-bottom: 20px;
+
+  @media only screen and(max-width:834px) {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto auto auto auto auto auto;
+  }
+}
+.carouselSize {
+  height: 533px;
+  width: 800px;
+}

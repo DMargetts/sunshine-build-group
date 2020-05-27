@@ -10,10 +10,18 @@
   text-align: center;
   align-items: center;
   width: 50%;
+
+  @media only screen and(max-width:834px) {
+    width: 100%;
+  }
 }
 .image {
   height: 100%;
-  width: 380px;
+  width: 40%;
+
+  @media only screen and(max-width:834px) {
+    display: none;
+  }
 }
 .reverse {
   display: flex;

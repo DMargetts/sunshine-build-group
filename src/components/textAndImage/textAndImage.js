@@ -7,7 +7,7 @@ const TextAndImage = ({ children, image, reverse }) => (
   <div className={reverse ? Styles.reverse : Styles.container}>
     <p className={Styles.paragraph}>{children}</p>
 
-    <Img fluid={image} className={Styles.image} />
+    <Img fluid={image} className={Styles.image} height="100%" width="40%" />
   </div>
 )
 

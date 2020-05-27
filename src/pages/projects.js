@@ -7,11 +7,11 @@ import {
   CarouselItem,
   CarouselControl,
   CarouselIndicators,
-  Button,
   Modal,
 } from "reactstrap"
 import TextSection from "../components/textSection/textSection"
 import SectionTitle from "../components/sectionTitle/sectionTitle"
+import projectStyles from "./pageStyles/projectsStyle.module.scss"
 
 const Projects = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -19,24 +19,9 @@ const Projects = ({ data }) => {
   const [modal, setModal] = useState(false)
 
   const toggle = () => setModal(!modal)
+  const setIndex = index => setActiveIndex(index)
 
-  const items = [
-    {
-      src: data.img1.childImageSharp.fluid,
-    },
-    {
-      src: data.img3.childImageSharp.fluid,
-    },
-    {
-      src: data.img4.childImageSharp.fluid,
-    },
-    {
-      src: data.img2.childImageSharp.fluid,
-    },
-    {
-      src: data.img5.childImageSharp.fluid,
-    },
-  ]
+  const items = data.allContentfulAsset.edges
 
   const next = () => {
     if (animating) return
@@ -59,9 +44,9 @@ const Projects = ({ data }) => {
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-        key={item.src}
+        key={item.node.id}
       >
-        <Img fluid={item.src} style={{ height: "300px" }} />
+        <Img fluid={item.node.fluid} className={projectStyles.carouselSize} />
       </CarouselItem>
     )
   })
@@ -75,32 +60,45 @@ const Projects = ({ data }) => {
         reprehenderit id laboris. Eiusmod deserunt incididunt anim ex ipsum
         laboris ipsum esse. Laboris culpa ex commodo culpa eu pariatur
         adipisicing consectetur.
-        <br />
-        <br />
-        <Button color="danger" onClick={toggle}>
-          Open Projects
-        </Button>
-        <Modal isOpen={modal} toggle={toggle}>
-          <Carousel activeIndex={activeIndex} next={next} previous={previous}>
-            <CarouselIndicators
-              items={items}
-              activeIndex={activeIndex}
-              onClickHandler={goToIndex}
-            />
-            {slides}
-            <CarouselControl
-              direction="prev"
-              directionText="Previous"
-              onClickHandler={previous}
-            />
-            <CarouselControl
-              direction="next"
-              directionText="Next"
-              onClickHandler={next}
-            />
-          </Carousel>
-        </Modal>
       </TextSection>
+      <div className={projectStyles.grid}>
+        {items.map((item, i) => {
+          return (
+            <div className={projectStyles.imageContainer}>
+              <div
+                onClick={() => {
+                  toggle()
+                  setIndex(i)
+                }}
+                key={i}
+              >
+                <Img fluid={item.node.fluid} className={projectStyles.image} />
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      <Modal isOpen={modal} toggle={toggle}>
+        <Carousel activeIndex={activeIndex} next={next} previous={previous}>
+          <CarouselIndicators
+            items={items}
+            activeIndex={activeIndex}
+            onClickHandler={goToIndex}
+          />
+          {slides}
+          <CarouselControl
+            direction="prev"
+            directionText="Previous"
+            onClickHandler={previous}
+          />
+          <CarouselControl
+            direction="next"
+            directionText="Next"
+            onClickHandler={next}
+          />
+        </Carousel>
+      </Modal>
     </Layout>
   )
 }
@@ -113,38 +111,13 @@ export const query = graphql`
         }
       }
     }
-    img1: file(relativePath: { eq: "house1.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    img2: file(relativePath: { eq: "house2.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    img3: file(relativePath: { eq: "house3.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    img4: file(relativePath: { eq: "house4.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    img5: file(relativePath: { eq: "house5.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200, quality: 100) {
-          ...GatsbyImageSharpFluid
+    allContentfulAsset {
+      edges {
+        node {
+          id
+          fluid(maxWidth: 800, maxHeight: 533, quality: 100) {
+            ...GatsbyContentfulFluid
+          }
         }
       }
     }
