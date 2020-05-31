@@ -2,53 +2,30 @@ import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import Img from "gatsby-image"
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  Modal,
-} from "reactstrap"
+
+import Modal from "../components/modal/modal"
 import TextSection from "../components/textSection/textSection"
 import SectionTitle from "../components/sectionTitle/sectionTitle"
 import projectStyles from "./pageStyles/projectsStyle.module.scss"
+import Slider from "../components/slider/slider"
 
 const Projects = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [animating, setAnimating] = useState(false)
   const [modal, setModal] = useState(false)
-
-  const toggle = () => setModal(!modal)
+  const toggle = () => {
+    if (window.innerWidth > 834) {
+      setModal(true)
+    }
+  }
+  const hide = e => {
+    if (e.target.className === "modalStyle-module--modalBackground--2WbAa") {
+      setModal(false)
+    }
+  }
   const setIndex = index => setActiveIndex(index)
-
   const items = data.allContentfulAsset.edges
-
-  const next = () => {
-    if (animating) return
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1
-    setActiveIndex(nextIndex)
-  }
-
-  const previous = () => {
-    if (animating) return
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1
-    setActiveIndex(nextIndex)
-  }
-
-  const goToIndex = newIndex => {
-    if (animating) return
-    setActiveIndex(newIndex)
-  }
   const slides = items.map(item => {
-    return (
-      <CarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
-        key={item.node.id}
-      >
-        <Img fluid={item.node.fluid} />
-      </CarouselItem>
-    )
+    return <Img fluid={item.node.fluid} />
   })
   return (
     <Layout heading="Projects" header={data.file.childImageSharp.fluid}>
@@ -72,33 +49,21 @@ const Projects = ({ data }) => {
                 }}
                 key={i}
               >
-                <Img fluid={item.node.fluid} className={projectStyles.image} />
+                <Img
+                  fluid={item.node.fluid}
+                  className={projectStyles.image}
+                  key={i}
+                />
               </div>
             </div>
           )
         })}
       </div>
-
-      <Modal isOpen={modal} toggle={toggle}>
-        <Carousel activeIndex={activeIndex} next={next} previous={previous}>
-          <CarouselIndicators
-            items={items}
-            activeIndex={activeIndex}
-            onClickHandler={goToIndex}
-          />
-          {slides}
-          <CarouselControl
-            direction="prev"
-            directionText="Previous"
-            onClickHandler={previous}
-          />
-          <CarouselControl
-            direction="next"
-            directionText="Next"
-            onClickHandler={next}
-          />
-        </Carousel>
-      </Modal>
+      {modal && (
+        <Modal hide={hide}>
+          <Slider activeIndex={activeIndex}>{slides}</Slider>
+        </Modal>
+      )}
     </Layout>
   )
 }

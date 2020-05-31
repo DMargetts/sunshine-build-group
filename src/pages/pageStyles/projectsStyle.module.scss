@@ -4,6 +4,9 @@
 }
 .imageContainer {
   cursor: pointer;
+  @media only screen and(max-width:834px) {
+    cursor: default;
+  }
 }
 .grid {
   display: grid;

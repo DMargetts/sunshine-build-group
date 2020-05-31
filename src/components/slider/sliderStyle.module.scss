@@ -1,0 +1,42 @@
+.slider {
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  h1 {
+    font-weight: 900;
+  }
+}
+
+.left {
+  position: absolute;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100px;
+  display: flex;
+  cursor: pointer;
+  transition: 0.5s;
+  color: rgba(0, 0, 0, 0.4);
+
+  &:hover {
+    color: tomato;
+  }
+}
+.right {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100px;
+  display: flex;
+  cursor: pointer;
+  transition: 0.5s;
+  color: rgba(0, 0, 0, 0.4);
+  &:hover {
+    color: tomato;
+  }
+}

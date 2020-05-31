@@ -14,6 +14,15 @@ const Navigation = () => {
       <ul>
         <li>
           <Link
+            to="/"
+            name="home"
+            className={activeLink === ";" ? navStyles.active : ""}
+          >
+            HOME
+          </Link>
+        </li>
+        <li>
+          <Link
             to="/about"
             name="about"
             className={activeLink === "/about" ? navStyles.active : ""}
